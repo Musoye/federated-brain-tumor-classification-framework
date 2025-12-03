@@ -51,31 +51,16 @@ This leads to **more robust, inclusive, and scalable healthcare AI**.
 ```
 📁 federated-brain-tumor-classification-framework
 │
-├── data/                       # Local dataset partitions (simulated hospitals)
-├── federated/                  # Federated learning workflow
-│   ├── server.py               # Central server (aggregation)
-│   ├── client.py               # Hospital training nodes
-│   ├── fedavg.py               # Federated averaging algorithm
-│
-├── models/
-│   ├── custom_cnn.py           # Our custom CNN model
-│   ├── mobilenet.py            # Baseline models
-│   ├── resnet50.py
-│   ├── efficientnet.py
-│
-├── compression/
-│   ├── pruning.py
-│   ├── quantization.py
-│   ├── evaluate_size.py
-│
-├── webapp/
-│   ├── app.py                  # Flask/Django backend
-│   ├── static/
-│   ├── templates/
-│
-├── evaluation/
-│   ├── metrics.py              # Accuracy, F1, recall
-│   ├── inference_test.py
+├── config.py        # Contains all configurable parameters for the project
+├── model.py         # Defines all neural network architectures used in the project:
+├── preparation.py
+├── train.py       # Implements local training logic for a single model
+├── evaluate.py       # Accuracy, F1, recall
+├── pruning.py     # Implements model compression techniques
+├── save.py       # Handles model saving and loading:
+├── federated.py   # Handles federated learning workflow using Flower (flwr)
+├── predict.py    # Handles inference on new images or directories of images:
+├── start.py      # Entry point for the project:
 │
 └── README.md
 ```
