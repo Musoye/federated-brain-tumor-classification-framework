@@ -15,8 +15,10 @@ CONFIG = {
     "BATCH_SIZE": 8,
     "NUM_CLASSES": 2,
     "LR": 1e-3,
-    "EPOCHS_LOCAL": 2,
+    "EPOCHS_LOCAL": 10,
     "ROUNDS": 3,
     "CLIENTS_PATH": "data/",
     "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
 }
+
+#config, evaluate,federated, model, predict, preparation, pruning, save , train
