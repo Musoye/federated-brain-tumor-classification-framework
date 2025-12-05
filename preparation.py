@@ -7,16 +7,6 @@ from tqdm import tqdm
 from collections import OrderedDict
 import numpy as np
 
-CONFIG = {
-    "IMAGE_SIZE": 224,
-    "BATCH_SIZE": 8,
-    "NUM_CLASSES": 2,
-    "LR": 1e-3,
-    "EPOCHS_LOCAL": 5,
-    "ROUNDS": 5,
-    "CLIENTS_PATH": "data/",
-    "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
-}
 
 def get_transforms(train=True):
     t = [

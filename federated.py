@@ -12,17 +12,6 @@ from tqdm import tqdm
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
-CONFIG = {
-    "IMAGE_SIZE": 224,
-    "BATCH_SIZE": 8,
-    "NUM_CLASSES": 2,
-    "LR": 1e-3,
-    "EPOCHS_LOCAL": 5,
-    "ROUNDS": 5,
-    "CLIENTS_PATH": "data/",
-    "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
-}
-
 def get_params(model: nn.Module) -> List[np.ndarray]:
     """Return model parameters as list of numpy arrays (matching state_dict order)."""
     return [val.detach().cpu().numpy() for _, val in model.state_dict().items()]
