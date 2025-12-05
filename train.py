@@ -1,6 +1,5 @@
 import os
 import torch
-import flwr as fl
 import torch.nn as nn
 from torchvision import transforms, datasets, models
 from torch.utils.data import DataLoader, random_split
