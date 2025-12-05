@@ -2,6 +2,21 @@ from PIL import Image
 import torch
 import torch.nn.functional as F
 
+def get_transforms(train=True):
+    t = [
+        transforms.Resize((CONFIG["IMAGE_SIZE"], CONFIG["IMAGE_SIZE"])),
+    ]
+    if train:
+        t += [
+            transforms.RandomHorizontalFlip(),
+            transforms.RandomRotation(10),
+        ]
+    t += [
+        transforms.ToTensor(),
+        transforms.Normalize([0.485,0.456,0.406],[0.229,0.224,0.225])
+    ]
+    return transforms.Compose(t)
+
 def load_federated_model(model, checkpoint_path, device=None):
     """
     Loads your federated-trained model from a saved .pth checkpoint.

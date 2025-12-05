@@ -12,8 +12,8 @@ CONFIG = {
     "BATCH_SIZE": 8,
     "NUM_CLASSES": 2,
     "LR": 1e-3,
-    "EPOCHS_LOCAL": 10,
-    "ROUNDS": 5,
+    "EPOCHS_LOCAL": 20,
+    "ROUNDS": 10,
     "CLIENTS_PATH": "data/",
     "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
 }
