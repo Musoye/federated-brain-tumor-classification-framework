@@ -12,11 +12,11 @@ CONFIG = {
     "BATCH_SIZE": 8,
     "NUM_CLASSES": 2,
     "LR": 1e-3,
-    "EPOCHS_LOCAL": 2,
-    "ROUNDS": 3,
+    "EPOCHS_LOCAL": 10,
+    "ROUNDS": 5,
+    "CLIENTS_PATH": "data/",
     "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
 }
-
 
 def get_transforms(train=True):
     t = [
@@ -43,7 +43,7 @@ def make_dataloaders(path, batch=CONFIG["BATCH_SIZE"]):
     # --- CLASS NORMALIZATION ---
     new_class_to_idx = {}
     for cls in ds.classes:
-        if cls.lower() in ["notumor", "no", "negative"]:
+        if cls.lower() in ["notumor", "no", "negative", "no_tumor"]:
             new_class_to_idx[cls] = 0        # no tumor
         else:
             new_class_to_idx[cls] = 1        # yes tumor
