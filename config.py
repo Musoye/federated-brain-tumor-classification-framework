@@ -18,6 +18,7 @@ CONFIG = {
     "ROUNDS": 5,
     "CLIENTS_PATH": "data/",
     "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
+    "saved_path": "global_model.pth"
 }
 
 #config, evaluate,federated, model, predict, preparation, pruning, save , train
