@@ -7,7 +7,6 @@ from tqdm import tqdm
 from collections import OrderedDict
 import numpy as np
 
-from preparation import CONFIG
 
 def train_local(model, train_loader, val_loader):
     criterion = nn.CrossEntropyLoss()

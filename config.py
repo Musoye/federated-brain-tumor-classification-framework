@@ -14,8 +14,8 @@ CONFIG = {
     "BATCH_SIZE": 8,
     "NUM_CLASSES": 2,
     "LR": 1e-3,
-    "EPOCHS_LOCAL": 5,
-    "ROUNDS": 5,
+    "EPOCHS_LOCAL": 3,
+    "ROUNDS": 3,
     "CLIENTS_PATH": "data/",
     "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
     "saved_path": "global_model.pth"
