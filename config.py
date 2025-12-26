@@ -17,7 +17,7 @@ CONFIG = {
     "EPOCHS_LOCAL": 3,
     "ROUNDS": 3,
     "CLIENTS_PATH": "data/",
-    "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
+    "MODEL_NAME": "resnet50",   # custom, resnet18, mobilenet_v2
     "saved_path": "global_model.pth"
 }
 
