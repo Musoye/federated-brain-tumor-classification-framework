@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRI Brain Tumor Detection</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #111111;
+            --border-color: #333333;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --accent: #ffffff; /* Stark white for contrast */
+            --font-stack: 'Courier New', Courier, monospace; /* The "Engineer" font */
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: var(--card-bg);
+            /* Sharp border instead of soft shadow */
+            border: 1px solid var(--border-color); 
+            padding: 40px;
+            text-align: left; /* Left align looks more technical than center */
+            max-width: 450px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px; /* Adds that "scanning" feel */
+            margin-bottom: 10px;
+            margin-top: 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* Styling the messy file input */
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #000;
+            border: 1px dashed var(--border-color);
+            color: var(--text-muted);
+            font-family: var(--font-stack);
+            font-size: 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 12px 24px;
+            font-size: 14px;
+            font-family: var(--font-stack);
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        /* "Inverted" hover effect - classic terminal style */
+        button:hover {
+            background-color: var(--accent);
+            color: var(--bg-color);
+        }
+
+        .result-container {
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+        
+        /* Optional: Add a subtle code-like prefix */
+        h1::before {
+            content: "> ";
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div id="upload-page" class="container">
+    <h1>Initialize Detection</h1>
+    <p>System Ready. Upload MRI scan sequence for analysis.</p>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" accept="image/*" id="mri-scan" name="image" required />
+        <button type="submit">Execute Analysis</button>
+    </form>
+</div>
+
+</body>
+</html>

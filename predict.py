@@ -1,6 +1,28 @@
 from PIL import Image
 import torch
 import torch.nn.functional as F
+import os
+import torch
+import torch.nn as nn
+from torchvision import transforms, datasets, models
+from torch.utils.data import DataLoader, random_split
+from tqdm import tqdm
+from collections import OrderedDict
+import numpy as np
+
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+
+CONFIG = {
+    "IMAGE_SIZE": 224,
+    "BATCH_SIZE": 8,
+    "NUM_CLASSES": 2,
+    "LR": 1e-3,
+    "EPOCHS_LOCAL": 3,
+    "ROUNDS": 3,
+    "CLIENTS_PATH": "data/",
+    "MODEL_NAME": "custom",   # custom, resnet18, mobilenet_v2
+    "saved_path": "global_model.pth"
+}
 
 def get_transforms(train=True):
     t = [
@@ -41,16 +63,9 @@ def load_federated_model(model, checkpoint_path, device=None):
 
     return model.to(device)
 
-
 def predict_image(model, img_path, checkpoint_path, device=None):
     """
     Loads the model checkpoint + predicts on an image.
-
-    Args:
-        model (torch.nn.Module): Model architecture instance.
-        img_path (str): Path to image for prediction.
-        checkpoint_path (str): Saved federated model state.
-        device (str): CPU/GPU.
     """
 
     if device is None:
@@ -71,9 +86,11 @@ def predict_image(model, img_path, checkpoint_path, device=None):
         logits = model(x)
         probs = F.softmax(logits, dim=1)[0]
 
-    # Map model outputs to labels
+    # --- FIX: HARDCODE THE MAPPING HERE ---
+    # If the checkpoint didn't have the mapping, we force it:
     if not hasattr(model, "class_to_idx") or model.class_to_idx is None:
-        raise ValueError("model.class_to_idx not found in checkpoint. Save it when training.")
+        model.class_to_idx = {'no': 0, 'yes': 1}
+    # --------------------------------------
 
     idx_to_class = {v: k for k, v in model.class_to_idx.items()}
 
@@ -83,4 +100,3 @@ def predict_image(model, img_path, checkpoint_path, device=None):
     }
 
     return result
-
